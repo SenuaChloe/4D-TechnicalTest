@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1648832005 source:c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\main.cpp
+	<iostream>
+	"Test_BasicLexical.hpp"
+
+1648832210 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basiclexical.hpp
+	"AbstractTest.hpp"
+
+1648832161 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\abstracttest.hpp
+

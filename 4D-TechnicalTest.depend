@@ -2,3 +2,21 @@
 1584209020 source:c:\users\vultrao\workspace\4d-technicaltest\main.cpp
 	<iostream>
 
+1648830705 source:c:\users\vultrao\workspace\4d-technicaltest\lexicalparser.cpp
+	"LexicalParser.hpp"
+
+1648832083 c:\users\vultrao\workspace\4d-technicaltest\lexicalparser.hpp
+	<vector>
+	"JSONWord.hpp"
+
+1648830861 c:\users\vultrao\workspace\4d-technicaltest\jsonword.hpp
+	<optional>
+	<string>
+
+1648832032 source:c:\users\vultrao\workspace\4d-technicaltest\grammaticalparser.cpp
+	"GrammaticalParser.hpp"
+
+1648832076 c:\users\vultrao\workspace\4d-technicaltest\grammaticalparser.hpp
+	<vector>
+	"JSONWord.hpp"
+
