@@ -2,7 +2,6 @@
 
 #include "Test_BasicGrammatical.hpp"
 
-
 Test_BasicGrammatical::Test_BasicGrammatical() : AbstractTest("Test_BasicGrammatical")
 {
 }

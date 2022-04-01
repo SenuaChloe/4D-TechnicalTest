@@ -70,7 +70,7 @@ static std::vector<ExpectationType> rebuild_expectation_list(const std::vector<N
     else if (nest_stack.back() == NestType::OBJECT_COLON)
         return make_expectation_list(ExpectationType::OBJECT_END, ExpectationType::WHITESPACE);
     else if (nest_stack.back() == NestType::OBJECT)
-        return make_expectation_list(ExpectationType::COMMA, ExpectationType::WHITESPACE);
+        return make_expectation_list(ExpectationType::COLON, ExpectationType::WHITESPACE, ExpectationType::OBJECT_END);
 }
 
 
@@ -155,7 +155,7 @@ void GrammaticalParser::computeGrammaticalAnalysis(const std::vector<WT> & lexic
         case WT::COMMA:
             if (!expected(ExpectationType::COMMA, expectation_list))
                 throw grammatical_exception();
-            expectation_list = make_expectation_list(ExpectationType::VALUE);
+            expectation_list = make_expectation_list(ExpectationType::VALUE, ExpectationType::WHITESPACE);
             break;
 
 

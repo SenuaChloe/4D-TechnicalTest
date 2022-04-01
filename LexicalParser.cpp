@@ -33,6 +33,7 @@ static void parse_simple_symbol(std::vector<JSONWord> & result, std::optional<WT
 static void parse_string(std::vector<JSONWord> & result, std::optional<WT> & current_word_type, std::string & current_word);
 static void parse_whitespace(std::vector<JSONWord> & result, char c, std::optional<WT> & current_word_type, std::string & current_word);
 static void parse_other(std::vector<JSONWord> & result, char c, std::optional<WT> & current_word_type, std::string & current_word);
+static void parse_new_number_or_constant(std::vector<JSONWord> & result, char c, std::optional<WT> & current_word_type, std::string & current_word);
 
 
 
@@ -146,66 +147,81 @@ void parse_whitespace(std::vector<JSONWord> & result, char c, std::optional<WT> 
 // Parses any other value (i.e. numbers or constant such as true, false and null)
 void parse_other(std::vector<JSONWord> & result, char c, std::optional<WT> & current_word_type, std::string & current_word)
 {
-    switch (*current_word_type)
+    if (current_word_type)
     {
-    // Middle of a NUMBER
-    case WT::NUMBER:
-        if ( (c < '0' || c > '9') && c != '.' && c != 'e' && c != 'E' && c != '-' && c != '+' )
-            throw LexicalParser::lexical_exception();
-        break;
 
-    // Middle of TRUE
-    case WT::TRUE:
-        if (       !(c == 'r' && current_word == "t")
-                && !(c == 'u' && current_word == "tr")
-                && !(c == 'e' && current_word == "tru") )
-            throw LexicalParser::lexical_exception();
-        current_word += c;
-        if (current_word == "true")
+        switch (*current_word_type)
+        {
+        // Middle of a NUMBER
+        case WT::NUMBER:
+            if ( (c < '0' || c > '9') && c != '.' && c != 'e' && c != 'E' && c != '-' && c != '+' )
+                throw LexicalParser::lexical_exception();
+            break;
+
+        // Middle of TRUE
+        case WT::TRUE:
+            if (       !(c == 'r' && current_word == "t")
+                    && !(c == 'u' && current_word == "tr")
+                    && !(c == 'e' && current_word == "tru") )
+                throw LexicalParser::lexical_exception();
+            current_word += c;
+            if (current_word == "true")
+                save_current_word(result, current_word_type, current_word);
+            break;
+
+        // Middle of FALSE
+        case WT::FALSE:
+            if (       !(c == 'a' && current_word == "f")
+                    && !(c == 'l' && current_word == "fa")
+                    && !(c == 's' && current_word == "fal")
+                    && !(c == 'e' && current_word == "fals") )
+                throw LexicalParser::lexical_exception();
+            current_word += c;
+            if (current_word == "false")
+                save_current_word(result, current_word_type, current_word);
+            break;
+
+        // Middle of NULL
+        case WT::NULL_VALUE:
+            if ( !(c == 'u' && current_word == "n") && !(c == 'l' && ( current_word == "nu" || current_word == "nul") ) )
+                throw LexicalParser::lexical_exception();
+            current_word += c;
+            if (current_word == "null")
+                save_current_word(result, current_word_type, current_word);
+            break;
+
+        default:
+            // Forcing new word
             save_current_word(result, current_word_type, current_word);
-        break;
 
-    // Middle of FALSE
-    case WT::FALSE:
-        if (       !(c == 'a' && current_word == "f")
-                && !(c == 'l' && current_word == "fa")
-                && !(c == 's' && current_word == "fal")
-                && !(c == 'e' && current_word == "fals") )
-            throw LexicalParser::lexical_exception();
-        current_word += c;
-        if (current_word == "false")
-            save_current_word(result, current_word_type, current_word);
-        break;
+            current_word += c;
 
-    // Middle of NULL
-    case WT::NULL_VALUE:
-        if ( !(c == 'u' && current_word == "n") && !(c == 'l' && ( current_word == "nu" || current_word == "nul") ) )
-            throw LexicalParser::lexical_exception();
-        current_word += c;
-        if (current_word == "null")
-            save_current_word(result, current_word_type, current_word);
-        break;
-
-    default:
-        // Forcing new word
-        save_current_word(result, current_word_type, current_word);
-
-        current_word += c;
-
-        // Beginning of a number
-        if ( (c >= '0' && c <= '9') || c == '-' )
-            current_word_type = WT::NUMBER;
-        // Beginning of a true
-        else if (c == 't')
-            current_word_type = WT::TRUE;
-        // Beginning of a false
-        else if (c == 'f')
-            current_word_type = WT::FALSE;
-        // Beginning of a null
-        else if (c == 'n')
-            current_word_type = WT::NULL_VALUE;
-        else
-            throw LexicalParser::lexical_exception();
+            parse_new_number_or_constant(result, c, current_word_type, current_word);
+        }
+    }
+    else
+    {
+        parse_new_number_or_constant(result, c, current_word_type, current_word);
     }
 }
 
+
+
+// Parse a new number or constant
+void parse_new_number_or_constant(std::vector<JSONWord> & result, char c, std::optional<WT> & current_word_type, std::string & current_word)
+{
+    // Beginning of a number
+    if ( (c >= '0' && c <= '9') || c == '-' )
+        current_word_type = WT::NUMBER;
+    // Beginning of a true
+    else if (c == 't')
+        current_word_type = WT::TRUE;
+    // Beginning of a false
+    else if (c == 'f')
+        current_word_type = WT::FALSE;
+    // Beginning of a null
+    else if (c == 'n')
+        current_word_type = WT::NULL_VALUE;
+    else
+        throw LexicalParser::lexical_exception();
+}

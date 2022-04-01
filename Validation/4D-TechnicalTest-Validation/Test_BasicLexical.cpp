@@ -52,6 +52,7 @@ void Test_BasicLexical::run() noexcept
         return;
     }
 
+#ifdef ACTIVATE_DUMP
     std::cerr << "== DUMP == (input)" << std::endl;
     std::cerr << input << std::endl;
     std::cerr << "== DUMP == (expected)" << std::endl;
@@ -60,7 +61,8 @@ void Test_BasicLexical::run() noexcept
     std::cerr << std::endl << "== DUMP == (actual)" << std::endl;
     for (auto word : actual_result)
         std::cerr << static_cast<int>(word) << " ";
-    std::cerr << std::endl;
+    std::cerr << std::endl << std::endl;
+#endif // ACTIVATE_DUMP
 
     if (expected_result.size() != actual_result.size())
     {
