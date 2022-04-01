@@ -76,6 +76,9 @@ static std::vector<ExpectationType> rebuild_expectation_list(const std::vector<N
 
 void GrammaticalParser::computeGrammaticalAnalysis(const std::vector<WT> & lexical_json_input)
 {
+    if (lexical_json_input.size() == 0)
+        return;
+
     std::vector<NestType> nest_stack;
     std::vector<ExpectationType> expectation_list;
 
