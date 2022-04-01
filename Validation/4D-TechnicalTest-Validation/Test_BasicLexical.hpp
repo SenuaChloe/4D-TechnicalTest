@@ -2,8 +2,10 @@
 
 #include "AbstractTest.hpp"
 
-class Test_BasicLexical : public AbstractTest
+
+struct Test_BasicLexical : public AbstractTest
 {
+    Test_BasicLexical();
     ~Test_BasicLexical() override;
     void run() noexcept final;
 };
