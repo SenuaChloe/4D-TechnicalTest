@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Test_BasicLexical.hpp"
+#include "Test_BasicGrammatical.hpp"
 
 
 void check_result(const AbstractTest & test)
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
         check_result(test);
     }
     {
-        Test_BasicLexical test;
+        Test_BasicGrammatical test;
         test.run();
         check_result(test);
     }
