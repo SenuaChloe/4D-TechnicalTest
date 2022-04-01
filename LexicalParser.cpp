@@ -86,7 +86,6 @@ std::vector<WT> LexicalParser::computeLexicalAnalysis(std::string json_input)
             // WHITESPACE
             case ' ':
             case '\t':
-            case '\s':
             case '\n':
             case '\r':
                 parse_whitespace(aux_result, c, current_word_type, current_word);
@@ -104,7 +103,7 @@ std::vector<WT> LexicalParser::computeLexicalAnalysis(std::string json_input)
 
     std::vector<WT> result(aux_result.size());
     std::transform(begin(aux_result), end(aux_result), begin(result), [](const JSONWord & word){ return word.type; });
-    return std::move(result);
+    return result;
 }
 
 

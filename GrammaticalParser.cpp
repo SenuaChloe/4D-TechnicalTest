@@ -69,7 +69,7 @@ static std::vector<ExpectationType> rebuild_expectation_list(const std::vector<N
         return make_expectation_list(ExpectationType::ARRAY_END, ExpectationType::COMMA, ExpectationType::WHITESPACE);
     else if (nest_stack.back() == NestType::OBJECT_COLON)
         return make_expectation_list(ExpectationType::OBJECT_END, ExpectationType::WHITESPACE);
-    else if (nest_stack.back() == NestType::OBJECT)
+    else // NestType::OBJECT
         return make_expectation_list(ExpectationType::COLON, ExpectationType::WHITESPACE, ExpectationType::OBJECT_END);
 }
 
