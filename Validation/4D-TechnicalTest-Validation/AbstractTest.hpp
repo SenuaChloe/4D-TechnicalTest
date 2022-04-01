@@ -15,7 +15,7 @@ class AbstractTest
 public:
     AbstractTest(std::string_view test_names) : m_test_status(TestStatus::NOT_COMPLETE), m_test_name(test_names) {}
 
-    virtual ~AbstractTest() = 0;
+    virtual ~AbstractTest() {};
     virtual void run() noexcept = 0 ;
     TestStatus get_status() const { return m_test_status; };
     std::string_view get_name() const { return m_test_name; };

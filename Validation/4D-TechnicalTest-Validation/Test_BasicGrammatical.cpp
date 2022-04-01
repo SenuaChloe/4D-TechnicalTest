@@ -1,3 +1,5 @@
+#include "../../GrammaticalParser.hpp"
+
 #include "Test_BasicGrammatical.hpp"
 
 
@@ -9,6 +11,6 @@ Test_BasicGrammatical::~Test_BasicGrammatical()
 {
 }
 
-void Test_BasicGrammatical::run()
+void Test_BasicGrammatical::run() noexcept
 {
 }

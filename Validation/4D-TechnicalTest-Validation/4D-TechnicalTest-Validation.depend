@@ -1,15 +1,36 @@
 # depslib dependency file v1.0
-1648832005 source:c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\main.cpp
+1648833099 source:c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\main.cpp
 	<iostream>
 	"Test_BasicLexical.hpp"
 
-1648832972 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basiclexical.hpp
+1648833143 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basiclexical.hpp
 	"AbstractTest.hpp"
 
-1648832948 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\abstracttest.hpp
+1648836106 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\abstracttest.hpp
 	<iostream>
 	<string_view>
 
-1648832917 source:c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basiclexical.cpp
+1648837024 source:c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basiclexical.cpp
+	"../../LexicalParser.hpp"
+	"../../JSONWord.hpp"
 	"Test_BasicLexical.hpp"
+
+1648837033 source:c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basicgrammatical.cpp
+	"../../GrammaticalParser.hpp"
+	"Test_BasicGrammatical.hpp"
+
+1648833142 c:\users\vultrao\workspace\4d-technicaltest\validation\4d-technicaltest-validation\test_basicgrammatical.hpp
+	"AbstractTest.hpp"
+
+1648832076 c:\users\vultrao\workspace\4d-technicaltest\grammaticalparser.hpp
+	<vector>
+	"JSONWord.hpp"
+
+1648833514 c:\users\vultrao\workspace\4d-technicaltest\jsonword.hpp
+	<optional>
+	<string>
+
+1648832083 c:\users\vultrao\workspace\4d-technicaltest\lexicalparser.hpp
+	<vector>
+	"JSONWord.hpp"
 
