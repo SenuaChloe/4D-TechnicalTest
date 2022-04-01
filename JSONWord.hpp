@@ -5,6 +5,7 @@
 
 struct JSONWord
 {
+    // Types of JSON symbols & words
     enum class Type
     {
         OBJECT_BEGIN,
@@ -22,9 +23,11 @@ struct JSONWord
     };
 
     Type type;
-    std::optional<std::string> data; // Needed to check the strings and constants
+    std::optional<std::string> data; // Needed to check the numbers and constants
 
+    // Constructor with empty data
     JSONWord(Type type) : type(type), data(std::nullopt) {}
+    // Constructor with data
     JSONWord(Type type, std::string_view data) : type(type), data(data) {}
 };
 
