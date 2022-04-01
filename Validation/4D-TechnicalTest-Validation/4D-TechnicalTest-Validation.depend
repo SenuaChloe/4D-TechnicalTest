@@ -35,7 +35,8 @@
 	<vector>
 	"JSONWord.hpp"
 
-1648839544 source:c:\users\vultrao\workspace\4d-technicaltest\grammaticalparser.cpp
+1648842505 source:c:\users\vultrao\workspace\4d-technicaltest\grammaticalparser.cpp
+	<algorithm>
 	"GrammaticalParser.hpp"
 
 1648839926 source:c:\users\vultrao\workspace\4d-technicaltest\lexicalparser.cpp

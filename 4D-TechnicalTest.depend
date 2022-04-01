@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1584209020 source:c:\users\vultrao\workspace\4d-technicaltest\main.cpp
+1648832134 source:c:\users\vultrao\workspace\4d-technicaltest\main.cpp
 	<iostream>
+	<string>
+	"LexicalParser.hpp"
+	"GrammaticalParser.hpp"
 
 1648830705 source:c:\users\vultrao\workspace\4d-technicaltest\lexicalparser.cpp
 	"LexicalParser.hpp"
@@ -9,7 +12,7 @@
 	<vector>
 	"JSONWord.hpp"
 
-1648830861 c:\users\vultrao\workspace\4d-technicaltest\jsonword.hpp
+1648833514 c:\users\vultrao\workspace\4d-technicaltest\jsonword.hpp
 	<optional>
 	<string>
 

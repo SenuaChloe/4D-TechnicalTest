@@ -22,6 +22,9 @@ struct JSONWord
     };
 
     Type type;
-    std::optional<std::string> data;
+    std::optional<std::string> data; // Needed to check the strings and constants
+
+    JSONWord(Type type) : type(type), data(std::nullopt) {}
+    JSONWord(Type type, std::string_view data) : type(type), data(data) {}
 };
 

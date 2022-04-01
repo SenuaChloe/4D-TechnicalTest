@@ -15,6 +15,7 @@ void check_result(const AbstractTest & test)
     break; case TestStatus::OK:
         std::cout << "OK - Test succeeded: " << test.get_name() << std::endl;
     }
+    std::cout << std::endl;
 }
 
 int main(int argc, char *argv[])
