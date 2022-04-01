@@ -14,7 +14,7 @@ Test_BasicLexical::~Test_BasicLexical()
 
 void Test_BasicLexical::run() noexcept
 {
-    std::string input = "{\"test\" :[1,2.3e-15,\"foo\", {  }]}";
+    std::string input = "{\"test\" :[1,2.3,\"foo\", {  }]}";
     std::vector<JSONWord::Type> expected_result, actual_result;
 
     expected_result.push_back(JSONWord::Type::OBJECT_BEGIN);
@@ -42,6 +42,12 @@ void Test_BasicLexical::run() noexcept
     catch (LexicalParser::lexical_exception&)
     {
         std::cout << "NOK: Parsing is supposed to succeed, but failed instead" << std::endl;
+        m_test_status = TestStatus::NOK;
+        return;
+    }
+    catch (...)
+    {
+        std::cout << "NOK: Unknown error" << std::endl;
         m_test_status = TestStatus::NOK;
         return;
     }
